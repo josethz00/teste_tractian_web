@@ -1,0 +1,23 @@
+@import '~antd/dist/antd.css';
+@import '~antd/dist/antd.dark.css';
+
+* {
+
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  color: #ccc;
+  background-color:  #141414;
+}
+
+body,
+input,
+button,
+textarea {
+  font: 400 18px Roboto, sans-serif;
+}

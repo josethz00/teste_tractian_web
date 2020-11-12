@@ -1,12 +1,13 @@
 import React from 'react';
+import CustomHeader from '../../components/CustomHeader';
 
 
-const Home: React.FC = () => {
+const Home: React.FC = () => (
 
-  return (
-    <></>
-  );
+  <>
+    <CustomHeader />
+  </>
 
-}
+);
 
 export default Home;

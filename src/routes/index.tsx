@@ -4,19 +4,15 @@ import CreateRecords from '../pages/CreateRecords';
 import Home from '../pages/Home';
 
 
-const Routes: React.FC = () => {
+const Routes: React.FC = () => (
 
-  return (
+  <BrowserRouter>
+    <Switch>
+      <Route path='/' exact component={Home} />
+      <Route path='/create-records' component={CreateRecords} />
+    </Switch>
+  </BrowserRouter>
 
-    <BrowserRouter>
-      <Switch>
-        <Route path='/' component={Home} />
-        <Route path='create-records' component={CreateRecords} />
-      </Switch>
-    </BrowserRouter>
-
-  );
-
-};
+);
 
 export default Routes;
