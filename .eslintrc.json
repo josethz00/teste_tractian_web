@@ -30,11 +30,13 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "space-before-function-paren":"off",
     "react/jsx-filename-extension": [0],
     "no-multiple-empty-lines": "off",
     "quotes": ["error", "single"],
     "jsx-quotes": [2, "prefer-single"],
     "padded-blocks": ["error", "always"],
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

@@ -1,17 +1,38 @@
-import { Breadcrumb, Layout } from 'antd';
+import { Breadcrumb, Layout, Menu } from 'antd';
 import { Content, Footer } from 'antd/lib/layout/layout';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import CustomHeader from '../../components/CustomHeader';
+import RegisterCompany from '../../components/RegisterCompany';
+import RegisterMachine from '../../components/RegisterMachine';
+import RegisterUnity from '../../components/RegisterUnity';
+import RegisterUser from '../../components/RegisterUser';
 import './styles.css';
 
 
 const CreateRecords: React.FC = () => {
 
-  useEffect(() => {
+  const [selectedKey, setSelectedKey] = useState('Company');
 
-    console.log('oo');
+  function renderElement () {
 
-  }, []);
+    if (selectedKey === 'Company') {
+
+      return <RegisterCompany />;
+
+    }
+    if (selectedKey === 'Unity') {
+
+      return <RegisterUnity />;
+
+    }
+    if (selectedKey === 'User') {
+
+      return <RegisterUser />;
+
+    }
+    return <RegisterMachine />;
+
+  }
 
   return (
 
@@ -24,9 +45,25 @@ const CreateRecords: React.FC = () => {
           <Breadcrumb.Item>Create Records</Breadcrumb.Item>
         </Breadcrumb>
         <div className='register-section'>
-          <div className='switcher'>
-
-          </div>
+          <Menu
+            onClick={(e) => setSelectedKey(String(e.key))}
+            selectedKeys={[selectedKey]}
+            mode='horizontal'
+          >
+            <Menu.Item key='Company'>
+              Register Company
+            </Menu.Item>
+            <Menu.Item key='Unity'>
+              Register Unity
+            </Menu.Item>
+            <Menu.Item key='User'>
+              Register User
+            </Menu.Item>
+            <Menu.Item key='Machine'>
+              Register Machine
+            </Menu.Item>
+            {renderElement()}
+          </Menu>
         </div>
       </Content>
       <Footer style={{ textAlign: 'center', backgroundColor: 'transparent' }}>Teste Tractian ©2020 Created by José Thomaz</Footer>

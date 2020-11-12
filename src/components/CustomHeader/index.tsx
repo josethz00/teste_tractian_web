@@ -17,7 +17,7 @@ const CustomHeader: React.FC = () => {
         width: '100%',
         backgroundColor: '#0c0c0c'
       }}
-      title='Tractian Teste'
+      title='Tractian Test'
       extra={[
         <Button key='2' onClick={() => history.push('create-records')}>Create Records</Button>,
         <Button key='1' type='primary' onClick={() => history.push('/')}>Home</Button>

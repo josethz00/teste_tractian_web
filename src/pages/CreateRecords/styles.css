@@ -3,4 +3,6 @@
   min-height: 380px;
   background-color: #111;
   border-radius: 9px;
+  justify-content: center;
+  flex-direction: column;
 }
