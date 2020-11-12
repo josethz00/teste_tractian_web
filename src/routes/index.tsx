@@ -4,7 +4,6 @@ import CreateRecords from '../pages/CreateRecords';
 import Home from '../pages/Home';
 
 
-
 const Routes: React.FC = () => {
 
   return (
