@@ -30,6 +30,8 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-alert": "off",
     "space-before-function-paren":"off",
     "react/jsx-filename-extension": [0],
     "no-multiple-empty-lines": "off",
