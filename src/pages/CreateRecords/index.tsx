@@ -2,10 +2,10 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import { Content, Footer } from 'antd/lib/layout/layout';
 import React, { useState } from 'react';
 import CustomHeader from '../../components/CustomHeader';
-import RegisterCompany from '../../components/RegisterCompany';
-import RegisterMachine from '../../components/RegisterMachine';
-import RegisterUnity from '../../components/RegisterUnity';
-import RegisterUser from '../../components/RegisterUser';
+import RegisterCompany from '../../views/RegisterCompany';
+import RegisterMachine from '../../views/RegisterMachine';
+import RegisterUnity from '../../views/RegisterUnity';
+import RegisterUser from '../../views/RegisterUser';
 import './styles.css';
 
 
@@ -40,7 +40,7 @@ const CreateRecords: React.FC = () => {
       <CustomHeader />
       <Content style={{ padding: '0 50px', marginTop: 84 }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Teste Tractian</Breadcrumb.Item>
+          <Breadcrumb.Item>Test Tractian</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
           <Breadcrumb.Item>Create Records</Breadcrumb.Item>
         </Breadcrumb>

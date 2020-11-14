@@ -30,6 +30,9 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "camelcase": "off",
+    "react/jsx-curly-newline": "off",
+    "no-underscore-dangle": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "no-alert": "off",
     "space-before-function-paren":"off",
