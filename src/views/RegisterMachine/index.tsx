@@ -100,6 +100,11 @@ const RegisterMachine: React.FC = () => {
       || !selectedFile
     ) return false;
 
+    if (
+      !descriptionInputRef.current?.state.value
+      || descriptionInputRef.current?.state.value.length > 150
+    ) return false;
+
     if (healthScoreInputRef.current.input.value.length > 3) return false;
 
     if (Number(healthScoreInputRef.current.input.value) > 100) return false;
@@ -140,7 +145,7 @@ const RegisterMachine: React.FC = () => {
     <FormContainer>
       <h1>Machines registration form</h1>
       <Input ref={nameInputRef} placeholder='Machine name' size='large' style={{ width: 500, margin: '20px 0px' }} />
-      <Input.TextArea ref={descriptionInputRef} placeholder='Machine description' size='large' style={{ width: 500, margin: '20px 0px' }} />
+      <Input.TextArea ref={descriptionInputRef} placeholder='Machine description' size='large' style={{ width: 500, margin: '20px 0px' }} rows={3} maxLength={150} />
       <UploadDropzone onFileUploaded={setSelectedFile} />
       <Input ref={modelInputRef} placeholder='Machine model' size='large' style={{ width: 500, margin: '20px 0px' }} />
       <Input ref={healthScoreInputRef} placeholder='Health score' size='large' style={{ width: 500, margin: '20px 0px' }} type='number' />
@@ -173,9 +178,9 @@ const RegisterMachine: React.FC = () => {
       </Select>
       <Select value={selectedStatus} onChange={handleChangeStatus} size='large' style={{ width: 500, margin: '20px 0px' }}>
         <Select.Option value='0' disabled>Select a status for the machine</Select.Option>
-        <Select.Option value='Disponível' disabled>Disponível</Select.Option>
-        <Select.Option value='Em manutenção' disabled>Em manutenção</Select.Option>
-        <Select.Option value='Desativado' disabled>Desativado</Select.Option>
+        <Select.Option value='Disponível'>Disponível</Select.Option>
+        <Select.Option value='Em manutenção'>Em manutenção</Select.Option>
+        <Select.Option value='Desativado'>Desativado</Select.Option>
       </Select>
       <Button size='large' style={{ width: 500 }} onClick={handleSubmit}>
         Register

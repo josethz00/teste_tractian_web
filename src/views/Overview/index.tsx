@@ -2,7 +2,8 @@ import {
   Button,
   Select,
   message,
-  Descriptions
+  Descriptions,
+  Modal
 } from 'antd';
 import { SelectValue } from 'antd/lib/select';
 import React, { useEffect, useState } from 'react';
@@ -37,18 +38,20 @@ interface MachineProps {
     image_url: string;
     machine_model: string;
     health_score: number;
+    status: string;
     user: {
       _id: string;
       username: string;
     }
 
-  }
+}
 
 const Overview: React.FC = () => {
 
   const [companies, setCompanies] = useState<CompanyDataProps[]>();
   const [selectedCompany, setSelectedCompany] = useState<string>('0');
-  const [receivedData, setReceivedData] = useState<CompanyProps<any>>();
+  const [receivedData, setReceivedData] = useState<CompanyProps<MachineProps>>();
+  const [modalVisibility, setModalVisibility] = useState<boolean>(false);
 
   useEffect(() => {
 
@@ -76,7 +79,14 @@ const Overview: React.FC = () => {
 
     const { data } = await api.get(`companies/query-one/${selectedCompany}`);
     setReceivedData(data);
+    console.log(data);
     return true;
+
+  }
+
+  function handleModalPress () {
+
+    setModalVisibility(!modalVisibility);
 
   }
 
@@ -126,14 +136,87 @@ const Overview: React.FC = () => {
                     }}
                   >
                     {un.machines.map((machine: MachineProps) => (
-                      <div>
-                        <h4>
-                          Máquina:
-                        </h4>
-                        <h5>
-                          {machine.name}
-                        </h5>
-                      </div>
+                      <>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            cursor: 'pointer',
+                            textDecoration: 'underline'
+                          }}
+                          role='button'
+                          tabIndex={0}
+                          onClick={handleModalPress}
+                          onKeyDown={handleModalPress}
+                        >
+                          <h4>
+                            Machine name:
+                          </h4>
+                          <h4 style={{ marginLeft: 10 }}>
+                            {machine.name}
+                          </h4>
+                        </div>
+                        <Modal
+                          title='Machine info'
+                          visible={modalVisibility}
+                          onOk={handleModalPress}
+                          onCancel={handleModalPress}
+                        >
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <p style={{ marginRight: 10 }}>Name: </p>
+                            <p>{machine.name}</p>
+                          </div>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <p style={{ marginRight: 10 }}>Status: </p>
+                            <p>{machine.status}</p>
+                          </div>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <p style={{ marginRight: 10 }}>Model: </p>
+                            <p>{machine.machine_model}</p>
+                          </div>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <p style={{ marginRight: 10 }}>Health score: </p>
+                            <p>{machine.health_score}</p>
+                          </div>
+                          <br />
+                          <div
+                            style={{
+                              display: 'flex',
+                              borderRadius: 20,
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <img src={machine.image_url} alt='Foto da máquina' style={{ width: 350, borderRadius: 10 }} />
+                          </div>
+                        </Modal>
+                      </>
                     ))}
                   </div>
                 </Descriptions.Item>
