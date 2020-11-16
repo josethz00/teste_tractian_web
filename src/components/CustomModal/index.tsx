@@ -1,5 +1,5 @@
 import Modal from 'antd/lib/modal/Modal';
-import React, { useState } from 'react';
+import React from 'react';
 
 
 interface MachineModalProps {
