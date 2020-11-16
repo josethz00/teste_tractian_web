@@ -96,7 +96,7 @@ const Overview: React.FC = () => {
 
   async function handleSubmit () {
 
-    if (!selectedCompany) return false;
+    if (!selectedCompany || selectedCompany == '0') return false;
 
     const { data } = await api.get(`companies/query-one/${selectedCompany}`);
     setReceivedData(data);
